@@ -98,6 +98,7 @@ game.physics.arcade.overlap(player, coin, collectCoin, null, this);
 		// Removes the star from the screen
 		coin.kill();
 		createCoin( )
+		music.play() 
 	}
 	function createCoin(){
 		coin = game.add.sprite(700,800, "coin");
@@ -108,7 +109,6 @@ game.physics.arcade.overlap(player, coin, collectCoin, null, this);
 	}
 	if (coin.x < 0) {
 		createCoin()
-		music.play()
 	}
  };
 var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameDiv', { preload: preload, update: update, create: create });
