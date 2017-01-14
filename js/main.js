@@ -93,16 +93,20 @@ game.physics.arcade.overlap(player, coin, collectCoin, null, this);
 	};
 	function collectCoin (player, coin) {
 		console.log("hi")
-    // Removes the star from the screen
-    coin.kill();
-    coin.kill();
-		coin = game.add.sprite(900, GAME_HEIGHT, "obstacle");
-		coin.scale.setTo(1,0.2);
-		obstacle.anchor.setTo(0,1);
-		game.physics.arcade.enable(obstacle);
-		obstacle.body.immovable = true;
-
-}
+		// Removes the star from the screen
+		coin.kill();
+		createCoin( )
+	}
+	function createCoin(){
+		coin = game.add.sprite(700,800, "coin");
+		coin.scale.setTo(1,1);
+		coin.anchor.setTo(10,10);
+		game.physics.arcade.enable(coin);
+		coin.body.immovable = true;
+	}
+	if (coin.x < 0) {
+		createCoin()
+	}
  };
 var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameDiv', { preload: preload, update: update, create: create });
 
