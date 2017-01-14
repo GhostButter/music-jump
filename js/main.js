@@ -24,11 +24,13 @@ function preload(){
   game.load.image('ground', 'assets/wallHorizontal.png');
   game.load.image('obstacle', 'assets/wallVertical.png');
   game.load.audio("jump","music/jump.mp3");
+  game.load.audio("coin","music/coin.mp3");
   //If you'd like to load music files, the format would look like  game.load.audio('[name of music]', ['[location for music file]']);
 };
 
 function create(){
 	music = game.add.audio("jump");
+	music = game.add.audio("coin");
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 	game.stage.backgroundColor = "#3468db";
 	platforms = game.add.group();
@@ -106,6 +108,7 @@ game.physics.arcade.overlap(player, coin, collectCoin, null, this);
 	}
 	if (coin.x < 0) {
 		createCoin()
+		music.play()
 	}
  };
 var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameDiv', { preload: preload, update: update, create: create });
